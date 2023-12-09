@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors"); // Import the cors middleware
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = 4000;
 
 app.use(cors({ 
   origin: ["*"],
@@ -20,6 +20,15 @@ app.use(cors({
 // Enable CORS for all routes
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
+app.get('/about', (req, res) => {
+  res.send('This is my about route..... ')
+})
+
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
