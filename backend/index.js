@@ -11,6 +11,7 @@ app.use(cors({
   methods: ["GET", "POST", "OPTIONS", "PUT"],
   optionsSuccessStatus: 200,
   credentials: true,
+  preflightContinue: true,
 }));
 
 // app.use(cors());
@@ -110,6 +111,12 @@ const emailTemplate = `
   
   `;
 
+app._router.stack.forEach((middleware) => {
+    if (middleware.route) {
+        console.log("Registered route:", middleware.route.path);
+    }
+});
+
 app.options('*', function (req,res) { res.sendStatus(200); });
 // Define route for form submission
 app.post("/submit-form", (req, res) => {
@@ -119,7 +126,8 @@ app.post("/submit-form", (req, res) => {
 
   // // Check if it's a preflight request
   // if (req.method === "OPTIONS") {
-  //   res.status(200).end('ok'); // Respond OK for preflight requests
+  //   res.status(200); // Respond OK for preflight requests
+  //   return;
   // }
 
 
