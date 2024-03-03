@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-hero-pattern bg-cover bg-opacity-25 bg-fixed">
+    <html lang="en" className="bg-hero-pattern-mobile lg:bg-hero-pattern bg-cover bg-opacity-25 bg-fixed">
       <body className={`${inter.className}  2xl:max-w-screen-2xl mx-auto overflow-y-scroll`}>{children}</body>
     </html>
   );
