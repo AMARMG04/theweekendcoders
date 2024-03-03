@@ -17,7 +17,7 @@ const page = () => {
         {
             title: "E-commerce Solutions",
             description: "Unlock the full potential of your online store with our innovative ecommerce solutions.",
-            price: "29,999"
+            price: "19,999"
         },
         {
             title: "SaaS Solutions",

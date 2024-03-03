@@ -78,7 +78,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-4 md:gap-10">
             {
                 socialLinks.map((link, index) => (
-                    <Link href={link.link} target="_blank" className="text-lg tracking-tight relative font-normal underline-offset-8 after:bg-white after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 after:top-7 hover:after:w-full after:transition-all after:duration-300 cursor-pointer" key={index}>{link.name}</Link>
+                    <Link href={link.link} target="_blank" className="text-lg tracking-tight relative font-normal underline-offset-8 after:bg-white after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 after:top-7 hover:after:w-fit after:transition-all after:duration-300 cursor-pointer" key={index}>{link.name}</Link>
                 ))
             }
         </div>
