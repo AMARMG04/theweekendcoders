@@ -39,7 +39,7 @@ const page = () => {
                                 <h1 className='text-[32px] tracking-[-2px] font-medium text-left'>
                                     {service.title}
                                 </h1>
-                                <p className='my-10 text-2xl text-justify font-normal tracking-tight text-[#DDCDDE]'>
+                                <p className='my-10 text-2xl text-left font-normal tracking-tight text-[#DDCDDE]'>
                                     {service.description}
                                 </p>
                                 <div className='absolute bottom-20 right-10'>
