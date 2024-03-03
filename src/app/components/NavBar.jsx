@@ -45,7 +45,7 @@ const NavBar = () => {
         />
       </div>
       {selectMenu && (
-        <div className="overlay lg:hidden absolute top-24 left-0 w-full h-full bg-black bg-opacity-90 z-10 flex justify-center items-center">
+        <div className="overlay lg:hidden absolute top-24 left-0 w-full h-full bg-black bg-opacity-90 z-10 flex justify-center pt-[200px]">
           <div className="text-white text-2xl flex flex-col items-center gap-10">
             {Links.map((link, index) => (
               <Link
