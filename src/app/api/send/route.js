@@ -90,16 +90,20 @@ export const POST = async (req, res) => {
       };
 
       try{
-        await transporter.sendMail(customerMailOptions, (error) => {
-          if (error) {
-            console.error(
-              "Error sending acknowledgment email to the customer:",
-              error
-            );
-          } else {
-            console.log("Acknowledgment email sent to the customer");
-          }
-        });
+        await new Promise((resolve, reject) => {
+          transporter.sendMail(customerMailOptions, (error) => {
+            if (error) {
+              console.error(
+                "Error sending acknowledgment email to the customer:",
+                error
+              );
+              reject(error);
+            } else {
+              console.log("Acknowledgment email sent to the customer");
+              resolve();
+            }
+          });
+        }) 
       }catch(error){
         console.log(error)
       }
@@ -113,24 +117,26 @@ export const POST = async (req, res) => {
       };
 
      try{
-      await transporter.sendMail(adminMailOptions, (error) => {
-        if (error) {
-          console.error(
-            "Error sending form submission email to the admin:",
-            error
-          );
-          // res.status(500).send("Internal Server Error");
-          return NextResponse.json(
-            { error: "Internal Server Error", status: 500 }
-          );
-        } else {
-          console.log("Form submission email sent to the admin");
-          // res.status(200).send("Form submitted successfully");
-          return NextResponse.json(
-            { message: "Form submitted successfully", status: 200 }
-          );
-        }
-      });
+      await new Promise(() => {
+        transporter.sendMail(adminMailOptions, (error) => {
+          if (error) {
+            console.error(
+              "Error sending form submission email to the admin:",
+              error
+            );
+            // res.status(500).send("Internal Server Error");
+            return NextResponse.json(
+              { error: "Internal Server Error", status: 500 }
+            );
+          } else {
+            console.log("Form submission email sent to the admin");
+            // res.status(200).send("Form submitted successfully");
+            return NextResponse.json(
+              { message: "Form submitted successfully", status: 200 }
+            );
+          }
+        });
+      }) 
      }catch(error){
          console.log("Error sending form submission email to the admin:",error);
      }
