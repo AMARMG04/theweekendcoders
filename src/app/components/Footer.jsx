@@ -53,7 +53,7 @@ const Footer = () => {
             <Link
               href={link.href}
               key={index}
-              className={`relative font-normal underline-offset-8 after:bg-white after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 after:top-7 hover:after:w-full after:transition-all after:duration-300 cursor-pointer}`}
+              className={`relative font-normal underline-offset-8 after:bg-white after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 after:top-7 hover:after:w-fit after:transition-all after:duration-300 cursor-pointer}`}
             >
               {link.name}
             </Link>
