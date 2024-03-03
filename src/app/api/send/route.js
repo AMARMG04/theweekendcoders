@@ -22,7 +22,6 @@ export const POST = async (req, res) => {
       });
 
       const createAdminEmail = () => {
-        // Implement your admin email template
         return `
             New form submission:
         
@@ -36,51 +35,50 @@ export const POST = async (req, res) => {
       };
 
       const emailTemplate = `
-    <html lang="en">
-    <head>
-      <style>
-        body {
-          padding: 20px;
-          font-family: Arial, Helvetica, sans-serif;
-          display: flex;
-          justify-content: center;
-        }
+          <html lang="en">
+          <head>
+            <style>
+              body {
+                padding: 20px;
+                font-family: Arial, Helvetica, sans-serif;
+                display: flex;
+                justify-content: center;
+              }
 
 
-        .content {
-          max-width: 620px;
-          text-align: justify;
-        }
-      </style>
-    </head>
-    <body>
-      <div class="container">
-        <p>Dear Client,</p>
-        <p class="content">
-          We have received your inquiry and are
-          excited to learn more about your project. <br><br>
-          Our team is currently reviewing
-          the details you provided, and we will reach out to you as soon as possible. 
-          We appreciate your interest in working with us
-          and look forward to the opportunity to collaborate on your project. <br><br>
-          If you have any urgent questions or if there's anything else you'd like to share,
-          don't hesitate to contact us directly to this email or call
-          us. <br><br>
+              .content {
+                max-width: 620px;
+                text-align: justify;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <p>Dear Client,</p>
+              <p class="content">
+                We have received your inquiry and are
+                excited to learn more about your project. <br><br>
+                Our team is currently reviewing
+                the details you provided, and we will reach out to you as soon as possible. 
+                We appreciate your interest in working with us
+                and look forward to the opportunity to collaborate on your project. <br><br>
+                If you have any urgent questions or if there's anything else you'd like to share,
+                don't hesitate to contact us directly to this email or call
+                us. <br><br>
 
-          Thank you.<br><br>
+                Thank you.<br><br>
 
-          Best regards,<br>
-          Mahesh Kumar, <br>
-          Team at TWC,<br>
-          theweekendcoders,<br>
-          9789260864.
-          
-        </p>
-      </div>
-    </body>
-  </html>
-  
-  `;
+                Best regards,<br>
+                Team at TWC,<br>
+                theweekendcoders,<br>
+                9789260864.
+                
+              </p>
+            </div>
+          </body>
+        </html>
+        
+      `;
 
       const customerMailOptions = {
         from: "theweekendcodershq@gmail.com", // Replace with your email
@@ -89,24 +87,20 @@ export const POST = async (req, res) => {
         html: emailTemplate,
       };
 
-      try{
-        await new Promise((resolve, reject) => {
-          transporter.sendMail(customerMailOptions, (error) => {
-            if (error) {
-              console.error(
-                "Error sending acknowledgment email to the customer:",
-                error
-              );
-              reject(error);
-            } else {
-              console.log("Acknowledgment email sent to the customer");
-              resolve();
-            }
-          });
-        }) 
-      }catch(error){
-        console.log(error)
-      }
+      await new Promise((resolve, reject) => {
+        transporter.sendMail(customerMailOptions, (error, info) => {
+          if (error) {
+            console.error(
+              "Error sending acknowledgment email to the customer:",
+              error
+            );
+            reject(error);
+          } else {
+            console.log("Acknowledgment email sent to the customer");
+            resolve(info);
+          }
+        });
+      });
 
       // Send form submission email to the admin
       const adminMailOptions = {
@@ -116,39 +110,20 @@ export const POST = async (req, res) => {
         text: createAdminEmail(),
       };
 
-     try{
-      await new Promise(() => {
-        transporter.sendMail(adminMailOptions, (error) => {
+      await new Promise((resolve, reject) => {
+        transporter.sendMail(adminMailOptions, (error, info) => {
           if (error) {
-            console.error(
-              "Error sending form submission email to the admin:",
-              error
-            );
-            // res.status(500).send("Internal Server Error");
-            return NextResponse.json(
-              { error: "Internal Server Error", status: 500 }
-            );
+            console.error("Error sending form submission email to the admin:", error);
+            reject(error);
           } else {
             console.log("Form submission email sent to the admin");
-            // res.status(200).send("Form submitted successfully");
-            return NextResponse.json(
-              { message: "Form submitted successfully", status: 200 }
-            );
+            resolve(info);
           }
         });
-      }) 
-     }catch(error){
-         console.log("Error sending form submission email to the admin:",error);
-     }
+      });
 
-      return NextResponse.json(
-        {
-          status: 200,
-        },
-        {
-          message: "Email Sent Successfully",
-        }
-      );
+      return NextResponse.json({status: 200},{message: "Email Sent Successfully"});
+      
     } catch (error) {
       console.error(error);
       return NextResponse.json(

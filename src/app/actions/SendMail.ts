@@ -23,6 +23,6 @@ export const SendMail = async (formdata: FormData) => {
             description
         })
     })
-    console.log(res);
+
     return res.json();
 }
