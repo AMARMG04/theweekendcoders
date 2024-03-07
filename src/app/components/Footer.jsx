@@ -29,7 +29,7 @@ const Footer = () => {
     },
     {
         name: "LinkedIn",
-        link: "https://www.linkedin.com/in/the-weekend-coders-undefined-108b70297/"
+        link: "https://www.linkedin.com/in/the-weekend-coders-twc/"
     },
     {
         name: "Behance",

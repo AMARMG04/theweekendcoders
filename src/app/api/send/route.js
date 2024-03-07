@@ -113,7 +113,10 @@ export const POST = async (req, res) => {
       await new Promise((resolve, reject) => {
         transporter.sendMail(adminMailOptions, (error, info) => {
           if (error) {
-            console.error("Error sending form submission email to the admin:", error);
+            console.error(
+              "Error sending form submission email to the admin:",
+              error
+            );
             reject(error);
           } else {
             console.log("Form submission email sent to the admin");
@@ -122,8 +125,10 @@ export const POST = async (req, res) => {
         });
       });
 
-      return NextResponse.json({status: 200},{message: "Email Sent Successfully"});
-      
+      return NextResponse.json(
+        { status: 200 },
+        { message: "Email Sent Successfully" }
+      );
     } catch (error) {
       console.error(error);
       return NextResponse.json(
