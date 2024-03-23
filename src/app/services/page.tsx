@@ -7,22 +7,22 @@ const page = () => {
         {
             title: "UI / UX Designs",
             description: "Now what true engineer doesn't love challenges? Highly creative designs that challenge you to explore the possibilities of frontend engineering.",
-            price: "1,999"
+            price: "1999"
         },
         {
             title: "Landing Pages & Sites",
             description: "Stand out from the crowd with innovative landing pages and websites that leverage the latest design trends and technology.",
-            price: "6,999"
+            price: "6999"
         },
         {
             title: "E-commerce Solutions",
             description: "Unlock the full potential of your online store with our innovative ecommerce solutions.",
-            price: "19,999"
+            price: "19999"
         },
         {
             title: "SaaS Solutions",
             description: "Build a custom software solution that fits your business needs.",
-            price: "29,999"
+            price: "29999"
         }
         
     ]
