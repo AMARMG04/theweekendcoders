@@ -11,21 +11,21 @@ const page = () => {
             description: 'An online retail shop.',
             link: '/'
         },
+        // {
+        //     title: 'BayLeaf',
+        //     description: 'A web solution for a restaurant.',
+        //     link: '/'
+        // },
         {
-            title: 'BayLeaf',
-            description: 'A web solution for a restaurant.',
-            link: '/'
+            title: 'Lap Corner',
+            description: 'An online retail shop for electronics.',
+            link: 'https://www.lapcorner.in'
         },
         {
             title: 'SHGS',
             description: 'A sweet shop.',
             link: '/'
         },
-        {
-            title: 'Tea Machi Cafe',
-            description: 'A tea and snack shop.',
-            link: '/'
-        }
     ]
     return (
         <div>
