@@ -9,8 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-pattern": "url('/images/bg3.jpg')",
-        "hero-pattern-mobile": "url('/images/bg1.jpg')",
+        "hero-pattern": "url('/images/BG04.png')",
       },
     },
   },
