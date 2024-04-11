@@ -17,7 +17,7 @@ export const POST = async (req, res) => {
         service: "gmail",
         auth: {
           user: "theweekendcodershq@gmail.com", // Replace with your email
-          pass: "ivqq ppbl vzil opoo", // Replace with your email password or use an app-specific password
+          pass: "ybja zuwv bcbf mcgd", // Replace with your email password or use an app-specific password
         },
       });
 
