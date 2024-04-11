@@ -9,7 +9,8 @@ const page = () => {
         {
             title: 'Byte Forge',
             description: 'An online retail shop.',
-            link: '/'
+            link: '/',
+            isLive: false
         },
         // {
         //     title: 'BayLeaf',
@@ -19,12 +20,14 @@ const page = () => {
         {
             title: 'Lap Corner',
             description: 'An online retail shop for electronics.',
-            link: 'https://www.lapcorner.in'
+            link: 'https://www.lapcorner.in',
+            isLive: true
         },
         {
             title: 'SHGS',
             description: 'A sweet shop.',
-            link: '/'
+            link: '/',
+            isLive: false
         },
     ]
     return (
@@ -44,7 +47,9 @@ const page = () => {
                                         <div className='flex flex-col gap-1'>
                                             <p className='text-xl font-medium tracking-tight'>{item.title} </p>
                                             <p className='text-lg font-normal tracking-tight text-[#E7E7E7] max-w-[300px]'>{item.description}</p>
-                                            <p className='text-md text-yellow-300'>Cooking</p>
+                                            {
+                                                item.isLive ? <p className='text-md text-green-400'>Live</p> :  <p className='text-md text-yellow-300'>Cooking</p> 
+                                            }
                                         </div>
                                         <div className='flex flex-col justify-center items-center gap-1'>
                                             <Link href={item.link}>
